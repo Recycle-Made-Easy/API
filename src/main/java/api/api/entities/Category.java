@@ -1,8 +1,11 @@
 package api.api.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
@@ -11,6 +14,8 @@ public class Category {
 	@GeneratedValue
 	private Long id;
 	private String name;
+	@OneToMany (mappedBy = "category")
+	private List<Recyclable> recyclable;
 
 	protected Category() {
 	}
@@ -27,8 +32,7 @@ public class Category {
 		return id;
 	}
 
-	public Object getCategory() {
-		return null;
+	public List<Recyclable> getRecyclable() {
+		return recyclable;
 	}
-
 }

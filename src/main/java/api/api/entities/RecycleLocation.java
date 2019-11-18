@@ -1,7 +1,14 @@
 package api.api.entities;
 
-public class RecycleLocation {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class RecycleLocation {
+	
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String name;
 	private String streetAddress;
