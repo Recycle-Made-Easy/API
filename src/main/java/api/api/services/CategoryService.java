@@ -12,13 +12,12 @@ public class CategoryService {
 	CategoryRepository categoryRepo;
 	
 	public Category addCategory(Category category) {
-		Category savedCategory = categoryRepo.save(category);
-		return savedCategory;
+		return categoryRepo.save(category);
 		
 	}
 
-	public Category findCategoryByMaterial(String string) {
-		return null;
+	public Category findCategoryByMaterial(String name) {
+		return categoryRepo.findCategoryByName(name);
 	}
 
 }
