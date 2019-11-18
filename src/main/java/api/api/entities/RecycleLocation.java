@@ -1,4 +1,4 @@
-package api.api;
+package api.api.entities;
 
 public class RecycleLocation {
 

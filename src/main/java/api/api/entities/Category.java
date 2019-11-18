@@ -1,4 +1,4 @@
-package api.api;
+package api.api.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +25,10 @@ public class Category {
 
 	public Long getId() {
 		return id;
+	}
+
+	public Object getCategory() {
+		return null;
 	}
 
 }
