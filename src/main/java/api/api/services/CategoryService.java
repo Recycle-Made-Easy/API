@@ -1,5 +1,7 @@
 package api.api.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,16 @@ public class CategoryService {
 
 	public Category findCategoryByName(String name) {
 		return categoryRepo.findCategoryByName(name);
+	}
+
+	public List<Category> findAllCategories() {
+		return (List<Category>) categoryRepo.findAll();
+		
+	}
+
+	public void deleteCategory(Category category) {
+		categoryRepo.delete(category);
+		
 	}
 
 }
