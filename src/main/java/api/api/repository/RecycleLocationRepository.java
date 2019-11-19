@@ -8,4 +8,6 @@ import api.api.entities.RecycleLocation;
 @Repository
 public interface RecycleLocationRepository extends CrudRepository<RecycleLocation, Long> {
 
+	RecycleLocation findRecycleLocationByName(String name);
+
 }
