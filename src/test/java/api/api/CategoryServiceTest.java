@@ -3,6 +3,8 @@ package api.api;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -14,7 +16,7 @@ import api.api.repository.CategoryRepository;
 import api.api.services.CategoryService;
 
 
-public class CategoryTest {
+public class CategoryServiceTest {
 
 	@InjectMocks
 	CategoryService underTest;
@@ -32,6 +34,21 @@ public class CategoryTest {
 	public void shouldAddCategoryToRepo() {
 		underTest.addCategory(mockCategory);
 		verify(categoryRepo).save(mockCategory);
+	}
+	@Test
+	public void shouldFindCategoryByName() {
+		underTest.findCategoryByName("Automobile");
+		verify(categoryRepo).findCategoryByName("Automobile");
+	}
+	@Test
+	public void shouldFindAllCategories() {
+		underTest.findAllCategories();
+		verify(categoryRepo).findAll();
+	}
+	@Test
+	public void deleteCategory() {
+		underTest.deleteCategory(mockCategory);
+		verify(categoryRepo).delete(mockCategory);
 	}
 	
 }
