@@ -10,4 +10,5 @@ public interface RecycleLocationRepository extends CrudRepository<RecycleLocatio
 
 	RecycleLocation findRecycleLocationByName(String name);
 
+
 }

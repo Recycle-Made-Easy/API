@@ -14,11 +14,15 @@ public class RecycleLocationService {
 	public RecycleLocation addRecycleLocation(RecycleLocation recycleLocation) {
 		return recycleLocationRepo.save(recycleLocation);
 	}
-	
-	public RecycleLocation findRecycleLocationByCity(String name) {
+
+	public RecycleLocation findRecycleLocationByName(String name) {
 		return recycleLocationRepo.findRecycleLocationByName(name);
+		
 	}
+		
+		
+}
 	
 	
 
-}
+
