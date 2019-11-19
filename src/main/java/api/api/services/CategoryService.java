@@ -16,7 +16,7 @@ public class CategoryService {
 		
 	}
 
-	public Category findCategoryByMaterial(String name) {
+	public Category findCategoryByName(String name) {
 		return categoryRepo.findCategoryByName(name);
 	}
 
