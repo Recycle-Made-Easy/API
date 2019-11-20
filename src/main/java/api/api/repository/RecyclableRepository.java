@@ -8,6 +8,5 @@ import api.api.entities.Recyclable;
 @Repository
 public interface RecyclableRepository extends CrudRepository<Recyclable, Long> {
 
-	public Recyclable findRecyclableByName(String string);
-
+	public Recyclable findRecyclableByName(String name);
 }
