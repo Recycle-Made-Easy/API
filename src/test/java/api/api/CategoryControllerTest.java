@@ -16,9 +16,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import api.api.controllers.CategoryController;
 import api.api.entities.Category;
 import api.api.services.CategoryService;
-import controllers.CategoryController;
 
 public class CategoryControllerTest {
 	

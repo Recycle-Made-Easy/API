@@ -18,6 +18,8 @@ public class Recyclable {
 	public Recyclable(String name) {
 		this.name = name;
 	}
+	
+	protected Recyclable() {}
 
 	public Long getId() {
 		return id;
@@ -38,6 +40,13 @@ public class Recyclable {
 	public void updateCategory(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return "Recyclable [id=" + id + ", name=" + name + ", category=" + category + "]";
+	}
+	
+	
 	
 
 }
