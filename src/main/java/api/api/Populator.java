@@ -28,6 +28,8 @@ public class Populator implements CommandLineRunner {
 		Recyclable recyclable1 = new Recyclable("Pop Cans");
 		recyclableService.addRecyclable(recyclable1);
 		
+		Recyclable recyclable2 = new Recyclable("Scrap Iron");
+		recyclableService.addRecyclable(recyclable2);
 	}
 	
 
