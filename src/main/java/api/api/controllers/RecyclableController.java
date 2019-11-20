@@ -1,7 +1,4 @@
-package controllers;
-
-
-import java.util.List;
+package api.api.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,21 +15,15 @@ public class RecyclableController {
 
 	@Autowired
 	private RecyclableService recyclableService;
-	
+
 	@GetMapping("/")
-	public List<Recyclable> getAllRecyclables(){
-		return (List<Recyclable>) recyclableService.findAllRecyclables();
+	public Iterable<Recyclable> getAllRecyclables() {
+		return recyclableService.findAllRecyclables();
 	}
-	
+
 	@GetMapping("/{id}")
 	public Recyclable getSingleRecyclable(@PathVariable Long id) {
 		return recyclableService.findRecyclableById(id);
 	}
-	
+
 }
-
-
-
-
-
-

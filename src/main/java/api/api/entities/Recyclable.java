@@ -18,8 +18,8 @@ public class Recyclable {
 	public Recyclable(String name) {
 		this.name = name;
 	}
-
-	protected Recyclable () {}
+	
+	protected Recyclable() {}
 	
 	public Long getId() {
 		return id;
@@ -75,7 +75,6 @@ public class Recyclable {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
-	}
-	
+	}	
 
 }

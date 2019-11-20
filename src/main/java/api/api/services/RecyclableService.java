@@ -1,11 +1,10 @@
 package api.api.services;
 
 import java.util.Optional;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api.api.entities.Category;
 import api.api.entities.Recyclable;
 import api.api.repository.RecyclableRepository;
 
@@ -32,8 +31,8 @@ public class RecyclableService {
 		return recyclableRepo.findRecyclableByName(name);
 	}
 
-	public Iterable<Recyclable> findAllRecyclables() {
-		return recyclableRepo.findAll();
+	public List<Recyclable> findAllRecyclables() {
+		return (List<Recyclable>)recyclableRepo.findAll();
 	}
 
 }
