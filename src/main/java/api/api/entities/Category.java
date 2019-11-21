@@ -15,10 +15,9 @@ public class Category {
 	private Long id;
 	private String name;
 	@OneToMany(mappedBy = "category")
-	private List<Recyclable> recyclable;
+	private List<Recyclable> recyclables;
 
-	protected Category() {
-	}
+	protected Category() {}
 
 	public Category(String name) {
 		this.name = name;
@@ -33,7 +32,15 @@ public class Category {
 	}
 
 	public List<Recyclable> getRecyclable() {
-		return recyclable;
+		return recyclables;
+	}
+	
+	public void addRecyclable(Recyclable recyclable) {
+		recyclables.add(recyclable);
+	}
+	
+	public void removeRecyclable(Recyclable recyclable) {
+		recyclables.remove(recyclable); 
 	}
 
 	@Override
@@ -66,4 +73,5 @@ public class Category {
 			return false;
 		return true;
 	}
+
 }
