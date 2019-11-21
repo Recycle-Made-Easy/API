@@ -38,9 +38,8 @@ public class CategoryController {
 	}
 	
 	@PostMapping("/add/{name}/")
-	public void addCategory(@PathVariable String name) {
-		Category category = new Category(name);
-		categoryService.addCategory(category);
+	public Category addCategory(@RequestBody Category category) {
+		return categoryService.addCategory(category);
 	}
 		
 	@PatchMapping("/{categoryName}/add/{recyclableName}")
