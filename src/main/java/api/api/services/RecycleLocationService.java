@@ -1,5 +1,7 @@
 package api.api.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,15 @@ public class RecycleLocationService {
 
 	public RecycleLocation findRecycleLocationByName(String name) {
 		return recycleLocationRepo.findRecycleLocationByName(name);
+		
+	}
+	
+	public List<RecycleLocation> findAllRecycleLocations() {
+		return(List<RecycleLocation>) recycleLocationRepo.findAll();
+	}
+
+	public void deleteRecycleLocation(RecycleLocation recycleLocation) {
+		recycleLocationRepo.delete(recycleLocation);
 		
 	}
 		
