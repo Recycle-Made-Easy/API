@@ -25,6 +25,11 @@ public class RecycleLocationService {
 	public List<RecycleLocation> findAllRecycleLocations() {
 		return(List<RecycleLocation>) recycleLocationRepo.findAll();
 	}
+
+	public void deleteRecycleLocation(RecycleLocation recycleLocation) {
+		recycleLocationRepo.delete(recycleLocation);
+		
+	}
 		
 		
 }

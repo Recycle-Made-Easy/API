@@ -52,5 +52,12 @@ public class RecyclableLocationControllerTest {
 		RecycleLocation retrievedRecyclableLocation = underTest.findRecyclableLocationByName("Dublin");
 		assertThat(retrievedRecyclableLocation, is(testRecycleLocation));
 	}
+	
+	@Test
+	public void addRecyclableLocation() {
+		when(recycleLocationService.addRecycleLocation(mockRecycleLocation)).thenReturn(testRecycleLocation);
+		RecycleLocation retrievedRecycleLocation = underTest.addRecycleLocation(mockRecycleLocation);
+		assertThat(retrievedRecycleLocation, is(testRecycleLocation));
+	}
 
 }
