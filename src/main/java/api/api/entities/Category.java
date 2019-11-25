@@ -42,6 +42,11 @@ public class Category {
 	public void removeRecyclable(Recyclable recyclable) {
 		recyclables.remove(recyclable); 
 	}
+	
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", recyclables=" + recyclables + "]";
+	}
 
 	@Override
 	public int hashCode() {
