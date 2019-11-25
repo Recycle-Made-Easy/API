@@ -1,5 +1,6 @@
 package api.api.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -73,6 +74,9 @@ public class RecycleLocation {
 	}
 	
 	public void addCategoryToLocation(Category category) {
+		if (categories == null) {
+			categories = new ArrayList<>();
+		}
 		categories.add(category);
 	}
 

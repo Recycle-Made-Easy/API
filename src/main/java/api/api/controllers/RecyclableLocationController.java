@@ -18,7 +18,7 @@ import api.api.services.RecycleLocationService;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/recycle-locations")
-public class RecyclabelLocationController {
+public class RecyclableLocationController {
 	
 	@Autowired
 	private RecycleLocationService recycleLocationService; 

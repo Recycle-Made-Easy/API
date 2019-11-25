@@ -27,11 +27,11 @@ public class Populator implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Category materials1 = new Category("Metals");
-		categoryService.addCategory(materials1);
+		Category metals = new Category("Metals");
+		categoryService.addCategory(metals);
 		
-		Category materials2 = new Category("Glass");
-		categoryService.addCategory(materials2);
+		Category glass = new Category("Glass");
+		categoryService.addCategory(glass);
 		
 		Recyclable recyclable1 = new Recyclable("Pop Cans");
 		recyclableService.addRecyclable(recyclable1);
@@ -39,11 +39,14 @@ public class Populator implements CommandLineRunner {
 		Recyclable recyclable2 = new Recyclable("Scrap Iron");
 		recyclableService.addRecyclable(recyclable2);
 		
-		RecycleLocation recycleLocation1 = new RecycleLocation("Mark Gray Enterprises");
-		recycleLocationService.addRecycleLocation(recycleLocation1);
+		RecycleLocation location1 = new RecycleLocation("Mark Gray Enterprises");
+		recycleLocationService.addRecycleLocation(location1);
+		recycleLocationService.addCategoryToLocation(location1, metals);
 		
-		RecycleLocation recycleLocation2 = new RecycleLocation("Hugo Neu Recycling");
-		recycleLocationService.addRecycleLocation(recycleLocation2);
+		RecycleLocation location2 = new RecycleLocation("Hugo Neu Recycling");
+		recycleLocationService.addRecycleLocation(location2);
+		recycleLocationService.addCategoryToLocation(location2, metals);
+		recycleLocationService.addCategoryToLocation(location2, glass);
 	}
 	
 

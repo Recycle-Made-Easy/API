@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import api.api.entities.Category;
 import api.api.entities.RecycleLocation;
 import api.api.repository.RecycleLocationRepository;
 
@@ -28,9 +29,12 @@ public class RecycleLocationService {
 
 	public void deleteRecycleLocation(RecycleLocation recycleLocation) {
 		recycleLocationRepo.delete(recycleLocation);
-		
 	}
-		
+
+	public void addCategoryToLocation(RecycleLocation recycleLocation, Category category) {
+		recycleLocation.addCategoryToLocation(category);
+		recycleLocationRepo.save(recycleLocation);
+	}
 		
 }
 	
