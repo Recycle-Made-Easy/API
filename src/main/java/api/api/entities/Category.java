@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -16,6 +17,8 @@ public class Category {
 	private String name;
 	@OneToMany(mappedBy = "category")
 	private List<Recyclable> recyclables;
+	@ManyToMany (mappedBy = "categories")
+	private List<RecycleLocation> locations;
 
 	protected Category() {}
 
