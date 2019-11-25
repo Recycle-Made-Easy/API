@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 
 import api.api.entities.Category;
 import api.api.entities.Recyclable;
+import api.api.entities.RecycleLocation;
 import api.api.services.CategoryService;
 import api.api.services.RecyclableService;
+import api.api.services.RecycleLocationService;
 
 @Component
 public class Populator implements CommandLineRunner {
@@ -17,6 +19,9 @@ public class Populator implements CommandLineRunner {
 	
 	@Autowired
 	private RecyclableService recyclableService; 
+	
+	@Autowired
+	private RecycleLocationService recycleLocationService;
 	
 
 	@Override
@@ -33,6 +38,12 @@ public class Populator implements CommandLineRunner {
 		
 		Recyclable recyclable2 = new Recyclable("Scrap Iron");
 		recyclableService.addRecyclable(recyclable2);
+		
+		RecycleLocation recycleLocation1 = new RecycleLocation("Mark Gray Enterprises");
+		recycleLocationService.addRecycleLocation(recycleLocation1);
+		
+		RecycleLocation recycleLocation2 = new RecycleLocation("Hugo Neu Recycling");
+		recycleLocationService.addRecycleLocation(recycleLocation2);
 	}
 	
 
