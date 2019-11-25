@@ -25,6 +25,9 @@ public class Populator implements CommandLineRunner {
 		Category materials1 = new Category("Metals");
 		categoryService.addCategory(materials1);
 		
+		Category materials2 = new Category("Glass");
+		categoryService.addCategory(materials2);
+		
 		Recyclable recyclable1 = new Recyclable("Pop Cans");
 		recyclableService.addRecyclable(recyclable1);
 		
