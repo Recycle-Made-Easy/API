@@ -1,8 +1,11 @@
 package api.api.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class RecycleLocation {
@@ -14,8 +17,9 @@ public class RecycleLocation {
 	private String streetAddress;
 	private String city;
 	private String state;
-
 	private String zipCode;
+	@ManyToMany
+	private List<Category> categories;
 
 	protected RecycleLocation() {
 	}
@@ -66,6 +70,14 @@ public class RecycleLocation {
 
 	public Long getId() {
 		return id;
+	}
+	
+	public void addCategoryToLocation(Category category) {
+		categories.add(category);
+	}
+
+	public List<Category> getCategories() {
+		return categories;
 	}
 
 	@Override
