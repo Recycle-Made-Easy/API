@@ -15,14 +15,14 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import api.api.controllers.RecyclabelLocationController;
+import api.api.controllers.RecyclableLocationController;
 import api.api.entities.RecycleLocation;
 import api.api.services.RecycleLocationService;
 
 public class RecyclableLocationControllerTest {
 	
 	@InjectMocks
-	RecyclabelLocationController underTest;
+	RecyclableLocationController underTest;
 	
 	@Mock
 	RecycleLocationService recycleLocationService;
