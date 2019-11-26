@@ -1,11 +1,16 @@
 package api.api.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class RecycleLocation {
+public class RecycleCenter {
 
 	@Id
 	@GeneratedValue
@@ -15,12 +20,17 @@ public class RecycleLocation {
 	private String city;
 	private String state;
 	private String zipCode;
+	@ManyToOne
+	private GeoLocation geoLocation;
+	@ManyToMany
+	private List<Category> categories;
 
-	protected RecycleLocation() {
+	protected RecycleCenter() {
 	}
 
-	public RecycleLocation(String name) {
+	public RecycleCenter(String name) {
 		this.name = name;
+		this.categories = new ArrayList<>();
 	}
 
 	public String getName() {
@@ -66,11 +76,27 @@ public class RecycleLocation {
 	public Long getId() {
 		return id;
 	}
+	
+	public GeoLocation getGeoLocation() {
+		return geoLocation;
+	}
+	
+	public void updateGeoLocation(GeoLocation geo) {
+		this.geoLocation = geo;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+	
+	public void addCategory(Category category) {
+		this.categories.add(category);
+	}
 
 	@Override
 	public String toString() {
-		return "RecycleLocation [id=" + id + ", name=" + name + ", streetAddress=" + streetAddress + ", city=" + city
-				+ ", state=" + state + ", zipCode=" + zipCode + "]";
+		return "RecycleCenter [id=" + id + ", name=" + name + ", streetAddress=" + streetAddress + ", city=" + city
+				+ ", state=" + state + ", zipCode=" + zipCode + ", geoLocation=" + geoLocation + "]";
 	}
 
 	@Override
@@ -78,6 +104,7 @@ public class RecycleLocation {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		result = prime * result + ((geoLocation == null) ? 0 : geoLocation.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
@@ -94,11 +121,16 @@ public class RecycleLocation {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		RecycleLocation other = (RecycleLocation) obj;
+		RecycleCenter other = (RecycleCenter) obj;
 		if (city == null) {
 			if (other.city != null)
 				return false;
 		} else if (!city.equals(other.city))
+			return false;
+		if (geoLocation == null) {
+			if (other.geoLocation != null)
+				return false;
+		} else if (!geoLocation.equals(other.geoLocation))
 			return false;
 		if (id == null) {
 			if (other.id != null)

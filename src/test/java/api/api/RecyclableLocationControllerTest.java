@@ -15,48 +15,48 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import api.api.controllers.RecyclableLocationController;
-import api.api.entities.RecycleLocation;
-import api.api.services.RecycleLocationService;
+import api.api.controllers.RecycleCenterController;
+import api.api.entities.RecycleCenter;
+import api.api.services.RecycleCenterService;
 
 public class RecyclableLocationControllerTest {
 	
 	@InjectMocks
-	RecyclableLocationController underTest;
+	RecycleCenterController underTest;
 	
 	@Mock
-	RecycleLocationService recycleLocationService;
+	RecycleCenterService recycleLocationService;
 	@Mock
-	private RecycleLocation mockRecycleLocation;
+	private RecycleCenter mockRecycleLocation;
 	
 	private MockMvc mockMvc;
-	private RecycleLocation testRecycleLocation;
+	private RecycleCenter testRecycleLocation;
 	
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
-		testRecycleLocation = new RecycleLocation("Dublin");
+		testRecycleLocation = new RecycleCenter("Dublin");
 		mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
 	}
 	
 	@Test
 	public void findAllReturnsListOfRecyclableLocations() {
 		when(recycleLocationService.findAllRecycleLocations()).thenReturn(Collections.singletonList(testRecycleLocation));
-		List<RecycleLocation> retrievedRecyclableLocation = underTest.findAll();
+		List<RecycleCenter> retrievedRecyclableLocation = underTest.findAll();
 		assertThat(retrievedRecyclableLocation, contains(testRecycleLocation));
 	}
 	
 	@Test
 	public void findByNameReturnsSingleRecyclableLocation() {
-		when(recycleLocationService.findRecycleLocationByName("Dublin")).thenReturn(testRecycleLocation);
-		RecycleLocation retrievedRecyclableLocation = underTest.findRecyclableLocationByName("Dublin");
+		when(recycleLocationService.findRecycleCenterByName("Dublin")).thenReturn(testRecycleLocation);
+		RecycleCenter retrievedRecyclableLocation = underTest.findRecyclableLocationByName("Dublin");
 		assertThat(retrievedRecyclableLocation, is(testRecycleLocation));
 	}
 	
 	@Test
 	public void addRecyclableLocation() {
-		when(recycleLocationService.addRecycleLocation(mockRecycleLocation)).thenReturn(testRecycleLocation);
-		RecycleLocation retrievedRecycleLocation = underTest.addRecycleLocation(mockRecycleLocation);
+		when(recycleLocationService.addRecycleCenter(mockRecycleLocation)).thenReturn(testRecycleLocation);
+		RecycleCenter retrievedRecycleLocation = underTest.addRecycleLocation(mockRecycleLocation);
 		assertThat(retrievedRecycleLocation, is(testRecycleLocation));
 	}
 
