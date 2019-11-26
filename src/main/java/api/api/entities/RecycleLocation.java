@@ -10,7 +10,7 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class RecycleLocation {
-
+//comment
 	@Id
 	@GeneratedValue
 	private Long id;
