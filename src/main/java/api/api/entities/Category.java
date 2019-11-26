@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
@@ -15,10 +14,8 @@ public class Category {
 	@GeneratedValue
 	private Long id;
 	private String name;
-//	@OneToMany(mappedBy = "category")
-//	private List<Recyclable> recyclables;
-	@OneToMany (mappedBy = "categories")
-	private List<RecycleLocation> locations;
+	@ManyToMany (mappedBy = "categories")
+	private List<RecycleCenter> centers;
 
 	protected Category() {}
 
@@ -32,21 +29,10 @@ public class Category {
 
 	public Long getId() {
 		return id;
-	}
+	}	
 
-//	public List<Recyclable> getRecyclable() {
-//		return recyclables;
-//	}
-//	
-//	public void addRecyclable(Recyclable recyclable) {
-//		recyclables.add(recyclable);
-//	}
-//	public void removeRecyclable(Recyclable recyclable) {
-//		recyclables.remove(recyclable); 
-//	}	
-
-	public void addRecycleLocation(RecycleLocation recycleLocation) {
-		this.locations.add(recycleLocation);
+	public void addRecycleLocation(RecycleCenter recycleLocation) {
+		this.centers.add(recycleLocation);
 	}
 
 	@Override
@@ -84,7 +70,5 @@ public class Category {
 			return false;
 		return true;
 	}
-	
-	
 
 }

@@ -5,15 +5,15 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import api.api.entities.RecycleLocation;
+import api.api.entities.RecycleCenter;
 
 public class RecycleLocationTest {
 
-	RecycleLocation underTest;
+	RecycleCenter underTest;
 	
 	@Before
 	public void setup() {
-		underTest = new RecycleLocation("Recycle Center");
+		underTest = new RecycleCenter("Recycle Center");
 	}
 	
 	@Test

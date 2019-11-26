@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import api.api.entities.Category;
-import api.api.entities.RecycleLocation;
+import api.api.entities.RecycleCenter;
 import api.api.repository.CategoryRepository;
 
 @Service
@@ -15,7 +15,7 @@ public class CategoryService {
 	CategoryRepository categoryRepo;
 	
 	@Autowired
-	RecycleLocationService recycleLocationService;
+	RecycleCenterService recycleLocationService;
 	@Autowired
 	CategoryService categoryService;
 	
@@ -46,7 +46,7 @@ public class CategoryService {
 	}
 
 	public void addRecycleLocationToCategory(String recycleLocationName, String categoryName) {
-		RecycleLocation recycleLocation = recycleLocationService.findRecycleLocationByName(recycleLocationName);
+		RecycleCenter recycleLocation = recycleLocationService.findRecycleCenterByName(recycleLocationName);
 		Category category = categoryService.findCategoryByName(categoryName);
 		category.addRecycleLocation(recycleLocation);
 		categoryRepo.save(category);

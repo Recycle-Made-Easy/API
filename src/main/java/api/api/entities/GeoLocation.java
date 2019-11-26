@@ -1,12 +1,11 @@
 package api.api.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class GeoLocation {
@@ -16,15 +15,14 @@ public class GeoLocation {
 	private Long id;
 	private String name;
 	private String placeId;
-	@ManyToOne
-	private List<Category> categories;
+	@OneToMany(mappedBy = "geoLocation")
+	private List<RecycleCenter> recycleCenters;
 	
 	protected GeoLocation() {}
 	
 	public GeoLocation(String name, String placeId) {
 		this.name = name;
 		this.placeId = placeId;
-		this.categories = new ArrayList<>();
 	}
 
 	public Long getId() {
@@ -38,13 +36,13 @@ public class GeoLocation {
 	public String getPlaceId() {
 		return placeId;
 	}
-
-	public List<Category> getCategories() {
-		return categories;
+	
+	public List<RecycleCenter> getRecycleCenters() {
+		return this.recycleCenters;
 	}
 	
-	public void addCategory(Category category) {
-		this.categories.add(category);
+	public void addRecycleCenterToGeoLocation(RecycleCenter rc) {
+		this.recycleCenters.add(rc);
 	}
 
 	@Override
@@ -88,6 +86,8 @@ public class GeoLocation {
 			return false;
 		return true;
 	}
+
+	
 
 	
 	

@@ -8,17 +8,17 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import api.api.entities.RecycleLocation;
-import api.api.repository.RecycleLocationRepository;
-import api.api.services.RecycleLocationService;
+import api.api.entities.RecycleCenter;
+import api.api.repository.RecycleCenterRepository;
+import api.api.services.RecycleCenterService;
 
 public class RecycleLocationServiceTest {
 	@InjectMocks
-	RecycleLocationService underTest;
+	RecycleCenterService underTest;
 	@Mock
-	private RecycleLocationRepository recycleLocationRepo;
+	private RecycleCenterRepository recycleLocationRepo;
 	@Mock
-	private RecycleLocation mockLocation;
+	private RecycleCenter mockLocation;
 	
 	@Before
 	public void setup() {
@@ -26,14 +26,14 @@ public class RecycleLocationServiceTest {
 }
 	@Test
 	public void shouldBeAbleToSaveLocation() {
-		underTest.addRecycleLocation(mockLocation);
+		underTest.addRecycleCenter(mockLocation);
 		verify(recycleLocationRepo).save(mockLocation);
 	}
 	
 	@Test
 	public void shouldBeAbleToFindLocationByName() {
-		underTest.findRecycleLocationByName("Dublin");
-		verify(recycleLocationRepo).findRecycleLocationByName("Dublin");
+		underTest.findRecycleCenterByName("Dublin");
+		verify(recycleLocationRepo).findByName("Dublin");
 	}
 	
 

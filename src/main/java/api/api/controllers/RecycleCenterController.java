@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import api.api.entities.Category;
-import api.api.entities.RecycleLocation;
+import api.api.entities.RecycleCenter;
 import api.api.services.CategoryService;
-import api.api.services.RecycleLocationService;
+import api.api.services.RecycleCenterService;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api/recycle-locations")
-public class RecyclableLocationController {
+public class RecycleCenterController {
 	
 	@Autowired
-	private RecycleLocationService recycleLocationService; 
+	private RecycleCenterService recycleLocationService; 
 	@Autowired
 	private CategoryService categoryService;
 	
 	@GetMapping("")
-	public List<RecycleLocation> findAll() {
+	public List<RecycleCenter> findAll() {
 		return recycleLocationService.findAllRecycleLocations();
 	}
 	
 	@GetMapping("/{name}")
-	public RecycleLocation findRecyclableLocationByName(@PathVariable String name) {
-		return recycleLocationService.findRecycleLocationByName(name);
+	public RecycleCenter findRecyclableLocationByName(@PathVariable String name) {
+		return recycleLocationService.findRecycleCenterByName(name);
 	}
 	
 //	@GetMapping("/category/{categoryId}")
@@ -44,13 +44,13 @@ public class RecyclableLocationController {
 //	}
 	
 	@PostMapping("")
-	public RecycleLocation addRecycleLocation(@RequestBody RecycleLocation recycleLocation) {
-		return recycleLocationService.addRecycleLocation(recycleLocation);
+	public RecycleCenter addRecycleLocation(@RequestBody RecycleCenter recycleLocation) {
+		return recycleLocationService.addRecycleCenter(recycleLocation);
 	}
 	
 	@DeleteMapping("/{name}/delete-category")
 	public void deleteRecycleLocation(@PathVariable String name) {
-		RecycleLocation recycleLocation = recycleLocationService.findRecycleLocationByName(name);
+		RecycleCenter recycleLocation = recycleLocationService.findRecycleCenterByName(name);
 		recycleLocationService.deleteRecycleLocation(recycleLocation);
 	}
 	
