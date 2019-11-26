@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import api.api.entities.Category;
 import api.api.entities.RecycleLocation;
+import api.api.services.CategoryService;
 import api.api.services.RecycleLocationService;
 
 @CrossOrigin
@@ -22,6 +24,8 @@ public class RecyclableLocationController {
 	
 	@Autowired
 	private RecycleLocationService recycleLocationService; 
+	@Autowired
+	private CategoryService categoryService;
 	
 	@GetMapping("")
 	public List<RecycleLocation> findAll() {
@@ -33,6 +37,12 @@ public class RecyclableLocationController {
 		return recycleLocationService.findRecycleLocationByName(name);
 	}
 	
+//	@GetMapping("/category/{categoryId}")
+//	public Iterable<RecycleLocation> filterRecycleLocationsByCategory(@PathVariable Long categoryId) {
+//		Category category = categoryService.findCategoryById(categoryId);
+//		return recycleLocationService.findRecycleLocationsByCategory(category.getName());
+//	}
+	
 	@PostMapping("")
 	public RecycleLocation addRecycleLocation(@RequestBody RecycleLocation recycleLocation) {
 		return recycleLocationService.addRecycleLocation(recycleLocation);
@@ -43,5 +53,7 @@ public class RecyclableLocationController {
 		RecycleLocation recycleLocation = recycleLocationService.findRecycleLocationByName(name);
 		recycleLocationService.deleteRecycleLocation(recycleLocation);
 	}
+	
+	
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import api.api.entities.Category;
+import api.api.entities.RecycleLocation;
 import api.api.repository.CategoryRepository;
 
 @Service
@@ -13,13 +14,26 @@ public class CategoryService {
 	@Autowired
 	CategoryRepository categoryRepo;
 	
+	@Autowired
+	RecycleLocationService recycleLocationService;
+	@Autowired
+	CategoryService categoryService;
+	
 	public Category addCategory(Category category) {
 		return categoryRepo.save(category);
-		
+	}
+	
+	public void addCategory(String name) {
+		Category category = new Category(name);
+		categoryRepo.save(category);
 	}
 
 	public Category findCategoryByName(String name) {
 		return categoryRepo.findCategoryByName(name);
+	}
+	
+	public Category findCategoryById(Long id) {
+		return categoryRepo.findById(id).get();
 	}
 
 	public List<Category> findAllCategories() {
@@ -29,7 +43,13 @@ public class CategoryService {
 
 	public void deleteCategory(Category category) {
 		categoryRepo.delete(category);
-		
+	}
+
+	public void addRecycleLocationToCategory(String recycleLocationName, String categoryName) {
+		RecycleLocation recycleLocation = recycleLocationService.findRecycleLocationByName(recycleLocationName);
+		Category category = categoryService.findCategoryByName(categoryName);
+		category.addRecycleLocation(recycleLocation);
+		categoryRepo.save(category);
 	}
 
 }

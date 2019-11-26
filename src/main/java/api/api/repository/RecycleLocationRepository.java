@@ -9,6 +9,7 @@ import api.api.entities.RecycleLocation;
 public interface RecycleLocationRepository extends CrudRepository<RecycleLocation, Long> {
 
 	RecycleLocation findRecycleLocationByName(String name);
+//	Iterable<RecycleLocation> findByCategoryNames(String categoryName);
 
 
 }

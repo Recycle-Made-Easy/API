@@ -4,50 +4,70 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import api.api.entities.Category;
-import api.api.entities.Recyclable;
-import api.api.entities.RecycleLocation;
 import api.api.services.CategoryService;
-import api.api.services.RecyclableService;
+import api.api.services.GeoLocationService;
 import api.api.services.RecycleLocationService;
 
 @Component
 public class Populator implements CommandLineRunner {
-	
+
 	@Autowired
 	private CategoryService categoryService;
-	
-	@Autowired
-	private RecyclableService recyclableService; 
-	
+
 	@Autowired
 	private RecycleLocationService recycleLocationService;
-	
+
+	@Autowired
+	private GeoLocationService geoLocationService;
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		geoLocations();
+		categories();
+		recycleLocations();
 		
-		Category metals = new Category("Metals");
-		categoryService.addCategory(metals);
-		
-		Category glass = new Category("Glass");
-		categoryService.addCategory(glass);
-		
-		Recyclable recyclable1 = new Recyclable("Pop Cans");
-		recyclableService.addRecyclable(recyclable1);
-		
-		Recyclable recyclable2 = new Recyclable("Scrap Iron");
-		recyclableService.addRecyclable(recyclable2);
-		
-		RecycleLocation location1 = new RecycleLocation("Mark Gray Enterprises");
-		recycleLocationService.addRecycleLocation(location1);
-		recycleLocationService.addCategoryToLocation(location1, metals);
-		
-		RecycleLocation location2 = new RecycleLocation("Hugo Neu Recycling");
-		recycleLocationService.addRecycleLocation(location2);
-		recycleLocationService.addCategoryToLocation(location2, metals);
-		recycleLocationService.addCategoryToLocation(location2, glass);
+		addCategoriesToGeoLocations();
+		addRecycleLocationsToCategories();
+
 	}
-	
+
+	private void addRecycleLocationsToCategories() {
+		categoryService.addRecycleLocationToCategory("Mark Gray Enterprises","Metal");
+		categoryService.addRecycleLocationToCategory("Hugo Neu Recycling","Glass");
+		categoryService.addRecycleLocationToCategory("Hugo Neu Recycling","Metal");
+	}
+
+	private void addCategoriesToGeoLocations() {
+		geoLocationService.addCategoryToGeoLocation("Dublin", "Metal");
+		geoLocationService.addCategoryToGeoLocation("Dublin", "Glass");
+		geoLocationService.addCategoryToGeoLocation("Dublin", "Paper");
+		geoLocationService.addCategoryToGeoLocation("Hilliard", "Metal");
+		geoLocationService.addCategoryToGeoLocation("Hilliard", "Glass");
+		geoLocationService.addCategoryToGeoLocation("Westerville", "Construction");
+		geoLocationService.addCategoryToGeoLocation("Westerville", "Paper");
+		geoLocationService.addCategoryToGeoLocation("Clintonville", "Plastic");
+	}
+
+	private void recycleLocations() {
+		recycleLocationService.addRecycleLocation("Mark Gray Enterprises");
+		recycleLocationService.addRecycleLocation("Hugo Neu Recycling");
+	}
+
+	private void categories() {
+		categoryService.addCategory("Metal");
+		categoryService.addCategory("Glass");
+		categoryService.addCategory("Construction");
+		categoryService.addCategory("Paper");
+		categoryService.addCategory("Plastic");
+	}
+
+	private void geoLocations() {
+		geoLocationService.addGeoLocation("Dublin", "ChIJH6FQ1MTsOIgRKJBoFWgXwgA");
+		geoLocationService.addGeoLocation("Clintonville", "ChIJn3LhCWiMOIgR3Rx6W6VV1PA");
+		geoLocationService.addGeoLocation("Columbus", "ChIJcd6QucGJOIgRM7Wxz_hmMuQ");
+		geoLocationService.addGeoLocation("Hilliard", "ChIJMxtWksaWOIgRnlXah9jo_aE");
+		geoLocationService.addGeoLocation("Westerville", "ChIJVyNMY2X1OIgRQT9dsFQwoUY");
+	}
 
 }

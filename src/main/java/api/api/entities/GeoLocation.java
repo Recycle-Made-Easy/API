@@ -1,57 +1,55 @@
 package api.api.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Category {
+public class GeoLocation {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String name;
-//	@OneToMany(mappedBy = "category")
-//	private List<Recyclable> recyclables;
-	@OneToMany (mappedBy = "categories")
-	private List<RecycleLocation> locations;
-
-	protected Category() {}
-
-	public Category(String name) {
+	private String placeId;
+	@ManyToOne
+	private List<Category> categories;
+	
+	protected GeoLocation() {}
+	
+	public GeoLocation(String name, String placeId) {
 		this.name = name;
-	}
-
-	public String getName() {
-		return name;
+		this.placeId = placeId;
+		this.categories = new ArrayList<>();
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-//	public List<Recyclable> getRecyclable() {
-//		return recyclables;
-//	}
-//	
-//	public void addRecyclable(Recyclable recyclable) {
-//		recyclables.add(recyclable);
-//	}
-//	public void removeRecyclable(Recyclable recyclable) {
-//		recyclables.remove(recyclable); 
-//	}	
+	public String getName() {
+		return name;
+	}
+	
+	public String getPlaceId() {
+		return placeId;
+	}
 
-	public void addRecycleLocation(RecycleLocation recycleLocation) {
-		this.locations.add(recycleLocation);
+	public List<Category> getCategories() {
+		return categories;
+	}
+	
+	public void addCategory(Category category) {
+		this.categories.add(category);
 	}
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + "]";
+		return "GeoLocation [id=" + id + ", name=" + name + ", placeId=" + placeId + "]";
 	}
 
 	@Override
@@ -60,6 +58,7 @@ public class Category {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((placeId == null) ? 0 : placeId.hashCode());
 		return result;
 	}
 
@@ -71,7 +70,7 @@ public class Category {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		GeoLocation other = (GeoLocation) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -82,9 +81,16 @@ public class Category {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (placeId == null) {
+			if (other.placeId != null)
+				return false;
+		} else if (!placeId.equals(other.placeId))
+			return false;
 		return true;
 	}
-	
-	
 
+	
+	
+	
+	
 }

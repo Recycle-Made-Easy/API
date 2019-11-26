@@ -1,6 +1,5 @@
 package api.api.services;
 
-import java.util.Optional;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,6 @@ public class RecyclableService {
 	}
 
 	public Recyclable findRecyclableById(Long id) {
-		Optional<Recyclable> recyclable = recyclableRepo.findById(id);
 		return recyclableRepo.findById(id).get();
 	}
 
