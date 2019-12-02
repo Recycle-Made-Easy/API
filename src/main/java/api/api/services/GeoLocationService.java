@@ -38,8 +38,8 @@ public class GeoLocationService {
 		RecycleCenter rc = recycleCenterService.findRecycleCenterByName(recycleCenterName);
 		GeoLocation gl = this.findGeoLocationByName(geoLocationName);
 		rc.updateGeoLocation(gl);
-		recycleCenterService.addRecycleCenter(rc);
-		gl.addRecycleCenterToGeoLocation(rc);
-		geoLocationRepo.save(gl);		
+		recycleCenterService.addRecycleCenter(rc);	
+//		gl.addRecycleCenterToGeoLocation(rc);
+//		geoLocationRepo.save(gl);
 	}
 }
