@@ -46,7 +46,8 @@ public class Populator implements CommandLineRunner {
 		rc2.updateState("OH");
 		rc2.updateZipCode("43228");
 		rc2.addCategory(categoryService.findCategoryByName("Electronics"));
-		
+		recycleCenterService.addRecycleCenter(rc2);
+		geoLocationService.addRecycleCenterToGeoLocation("Hugo Neu Recycling", "Columbus");
 	}	
 
 	private void createCategories() {
