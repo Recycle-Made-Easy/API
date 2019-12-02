@@ -27,14 +27,8 @@ public class Populator implements CommandLineRunner {
 		createGeoLocations();
 		createCategories();
 		createRecycleCenters();
-//		recycleCenters();
 
 	}
-
-//	private void recycleCenters() {
-//		geoLocationService.addRecycleCenterToGeoLocation(recycleCenterName, geoLocationName);cleCenterToGeoLocation("Mark Gray Enterprises", "Valleyview");
-//		geoLocationService.addRecycleCenterToGeoLocation("Hugo Neu Recycling", "Hilliard");
-//	}
 	
 	private void createRecycleCenters() {		
 		RecycleCenter rc1 = new RecycleCenter("Mark Gray Enterprises");
@@ -44,6 +38,7 @@ public class Populator implements CommandLineRunner {
 		rc1.updateZipCode("43204");
 		rc1.addCategory(categoryService.findCategoryByName("Metal"));
 		recycleCenterService.addRecycleCenter(rc1);
+		geoLocationService.addRecycleCenterToGeoLocation("Mark Gray Enterprises", "Valleyview");
 		
 		RecycleCenter rc2 = new RecycleCenter("Hugo Neu Recycling");
 		rc2.updateStreetAddress("2801 Charter St");

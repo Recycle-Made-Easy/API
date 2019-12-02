@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class GeoLocation {
 
@@ -15,7 +17,8 @@ public class GeoLocation {
 	private Long id;
 	private String name;
 	private String placeId;
-	@OneToMany(mappedBy = "geoLocation")
+	@JsonIgnore
+	@OneToMany (mappedBy = "geoLocation")
 	private List<RecycleCenter> recycleCenters;
 	
 	protected GeoLocation() {}
