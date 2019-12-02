@@ -19,7 +19,7 @@ import api.api.services.RecycleCenterService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/recycle-locations")
+@RequestMapping("/api/centers")
 public class RecycleCenterController {
 	
 	@Autowired

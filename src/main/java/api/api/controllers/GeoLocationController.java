@@ -1,7 +1,7 @@
 package api.api.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,17 +37,20 @@ public class GeoLocationController {
 		return geo.getRecycleCenters();
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
 	@GetMapping("/{geoId}/{catId}")
 	public List<RecycleCenter> findCentersByLocationAndCat(@PathVariable Long geoId,
 		@PathVariable Long catId) {
 		Category filteredCat = categoryService.findCategoryById(catId);
-		return geoLocationService.findGeoLocationById(geoId)
-								 .getRecycleCenters()
-								 .stream()
-								 .filter(center -> center.getCategories().equals(filteredCat))
-								 .collect(Collectors.toList());
-
+		List<RecycleCenter> allCenters = geoLocationService.findGeoLocationById(geoId).getRecycleCenters();
+		List<RecycleCenter> filteredCenters=new ArrayList<>();
+		
+		for(RecycleCenter center: allCenters) {
+			if(center.getCategories().contains(filteredCat)) {
+				filteredCenters.add(center);
+			}
+		}
+		
+		return filteredCenters;
 	
 	}
 	
