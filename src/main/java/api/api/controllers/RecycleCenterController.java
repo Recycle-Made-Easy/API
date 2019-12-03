@@ -43,7 +43,7 @@ public class RecycleCenterController {
 //		return recycleLocationService.findRecycleLocationsByCategory(category.getName());
 //	}
 	
-	@PostMapping("")
+	@PostMapping("/add")
 	public RecycleCenter addRecycleLocation(@RequestBody RecycleCenter recycleLocation) {
 		return recycleLocationService.addRecycleCenter(recycleLocation);
 	}
