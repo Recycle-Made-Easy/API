@@ -37,22 +37,26 @@ public class GeoLocationController {
 		return geo.getRecycleCenters();
 	}
 
+	@GetMapping("/placeId/{placeId}")
+	public List<RecycleCenter> findRecycleCentersByGeoLocationPlaceId(@PathVariable String placeId) {
+		GeoLocation geo = geoLocationService.findGeoLocationByPlaceId(placeId);
+		return geo.getRecycleCenters();
+	}
+
 	@GetMapping("/{geoId}/{catId}")
-	public List<RecycleCenter> findCentersByLocationAndCat(@PathVariable Long geoId,
-		@PathVariable Long catId) {
+	public List<RecycleCenter> findCentersByLocationAndCat(@PathVariable Long geoId, @PathVariable Long catId) {
 		Category filteredCat = categoryService.findCategoryById(catId);
 		List<RecycleCenter> allCenters = geoLocationService.findGeoLocationById(geoId).getRecycleCenters();
-		List<RecycleCenter> filteredCenters=new ArrayList<>();
-		
-		for(RecycleCenter center: allCenters) {
-			if(center.getCategories().contains(filteredCat)) {
+		List<RecycleCenter> filteredCenters = new ArrayList<>();
+
+		for (RecycleCenter center : allCenters) {
+			if (center.getCategories().contains(filteredCat)) {
 				filteredCenters.add(center);
 			}
 		}
-		
+
 		return filteredCenters;
-	
+
 	}
-	
 
 }
