@@ -23,7 +23,7 @@ public class GeoLocationService {
 	}
 	
 	public List<GeoLocation> findAllGeoLocations(){
-		return (List<GeoLocation>) geoLocationRepo.findAll();
+		return (List<GeoLocation>) geoLocationRepo.findAllByOrderByName();
 	}
 	
 	public GeoLocation findGeoLocationById(Long id) {
@@ -32,6 +32,10 @@ public class GeoLocationService {
 	
 	public GeoLocation findGeoLocationByName(String name) {
 		return geoLocationRepo.findByName(name);	
+	}
+	
+	public GeoLocation findGeoLocationByPlaceId(String placeId) {
+		return geoLocationRepo.findByPlaceId(placeId);
 	}
 	
 	public void addRecycleCenterToGeoLocation(String recycleCenterName, String geoLocationName) {
