@@ -71,6 +71,18 @@ public class Populator implements CommandLineRunner {
 		recycleCenterService.addRecycleCenter(rc4);
 		geoLocationService.addRecycleCenterToGeoLocation("Eco ATM", "Worthington");
 		
+		RecycleCenter rc5 = new RecycleCenter("Ohio Mulch Recycling Drop Off");
+		rc5.updateStreetAddress("4665 Westerville Road");
+		rc5.updateCity("Westerville");
+		rc5.updateState("OH");
+		rc5.updateZipCode("43229");
+		rc5.updatePlaceId("ChIJtXIJduyKOIgRguxb-Pk7F6k");
+		rc5.addCategory(categoryService.findCategoryByName("Electronics"));
+		recycleCenterService.addRecycleCenter(rc5);
+		geoLocationService.addRecycleCenterToGeoLocation("Eco ATM", "Worthington");
+		
+
+		
 	}	
 
 	private void createCategories() {
