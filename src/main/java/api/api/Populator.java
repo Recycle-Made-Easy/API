@@ -36,6 +36,7 @@ public class Populator implements CommandLineRunner {
 		rc1.updateCity("Columbus");
 		rc1.updateState("OH");
 		rc1.updateZipCode("43204");
+		rc1.updatePlaceId("ChIJX6FjmMaPOIgRB40RjiCNx6E");
 		rc1.addCategory(categoryService.findCategoryByName("Metal"));
 		recycleCenterService.addRecycleCenter(rc1);
 		geoLocationService.addRecycleCenterToGeoLocation("Mark Gray Enterprises", "Valleyview");
@@ -45,6 +46,7 @@ public class Populator implements CommandLineRunner {
 		rc2.updateCity("Columbus");
 		rc2.updateState("OH");
 		rc2.updateZipCode("43228");
+		rc2.updatePlaceId("ChIJEx0OZW6ROIgRp8fDhjF6k9k");
 		rc2.addCategory(categoryService.findCategoryByName("Electronics"));
 		recycleCenterService.addRecycleCenter(rc2);
 		geoLocationService.addRecycleCenterToGeoLocation("Hugo Neu Recycling", "Columbus");

@@ -20,6 +20,7 @@ public class RecycleCenter {
 	private String city;
 	private String state;
 	private String zipCode;
+	private String placeId;
 	@ManyToOne
 	private GeoLocation geoLocation;
 	@ManyToMany
@@ -47,6 +48,14 @@ public class RecycleCenter {
 
 	public void updateStreetAddress(String streetAddress) {
 		this.streetAddress = streetAddress;
+	}
+	
+	public void updatePlaceId(String placeId) {
+		this.placeId = placeId;
+	}
+	
+	public String getPlaceId() {
+		return this.placeId;
 	}
 
 	public String getCity() {
