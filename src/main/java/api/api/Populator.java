@@ -94,6 +94,46 @@ public class Populator implements CommandLineRunner {
 		recycleCenterService.addRecycleCenter(rc6);
 		geoLocationService.addRecycleCenterToGeoLocation("SWACO", "Grove City");
 		
+		RecycleCenter rc7 = new RecycleCenter("Public Recycling");
+		rc7.updateStreetAddress("Ramblebranch Dr");
+		rc7.updateCity("Upper Arlington");
+		rc7.updateState("OH");
+		rc7.updateZipCode("43220");
+		rc7.updatePlaceId("ChIJOZnWFniNOIgRnFFlLbDH_6M");
+		rc7.addCategory(categoryService.findCategoryByName("Plastic"));
+		rc7.addCategory(categoryService.findCategoryByName("Paper"));
+		recycleCenterService.addRecycleCenter(rc7);
+		geoLocationService.addRecycleCenterToGeoLocation("Public Recycling", "Upper Arlington");
+		
+		RecycleCenter rc8 = new RecycleCenter("Cyclemet");
+		rc8.updateStreetAddress("2405 Harrison Road");
+		rc8.updateCity("Columbus");
+		rc8.updateState("OH");
+		rc8.updateZipCode("43231");
+		rc8.updatePlaceId("ChIJl8Vcb8-POIgRmGPiJCcteHQ");
+		rc8.addCategory(categoryService.findCategoryByName("Metal"));
+		recycleCenterService.addRecycleCenter(rc8);
+		geoLocationService.addRecycleCenterToGeoLocation("Cyclemet", "Columbus");
+		
+		RecycleCenter rc9 = new RecycleCenter("Trader Joes");
+		rc9.updateStreetAddress("6355 Sawmill Road");
+		rc9.updateCity("Dublin");
+		rc9.updateState("OH");
+		rc9.updateZipCode("43017");
+		rc9.updatePlaceId("EiY2MzU1IFNhd21pbGwgUmQsIER1YmxpbiwgT0ggNDMwMTcsIFVTQSIxEi8KFAoSCZW7QbyxkjiIEUWRVhILwCSnENMxKhQKEgkTavbETe04iBESa8fS8_Ydhg");
+		rc9.addCategory(categoryService.findCategoryByName("Plastic"));
+		recycleCenterService.addRecycleCenter(rc9);
+		geoLocationService.addRecycleCenterToGeoLocation("Trader Joes", "Dublin");
+		
+		RecycleCenter rc10 = new RecycleCenter("Best Buy");
+		rc10.updateStreetAddress("1375 Polaris Pkwy");
+		rc10.updateCity("Westerville");
+		rc10.updateState("OH");
+		rc10.updateZipCode("43240");
+		rc10.updatePlaceId("ChIJzfgUKH30OIgRKamGvoX0Kkc");
+		rc10.addCategory(categoryService.findCategoryByName("Electronics"));
+		recycleCenterService.addRecycleCenter(rc10);
+		geoLocationService.addRecycleCenterToGeoLocation("Best Buy", "Westerville");
 
 		
 	}	
