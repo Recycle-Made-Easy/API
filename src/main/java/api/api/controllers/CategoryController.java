@@ -43,11 +43,10 @@ public class CategoryController {
 	public Category addCategoryWithRequestBody(@RequestBody Category category) {
 		return categoryService.addCategory(category);
 	}
-
-	@DeleteMapping("/{name}/delete-category")
-	public void deleteCategory(@PathVariable String name) {
-		Category category = categoryService.findCategoryByName(name);
-		categoryService.deleteCategory(category);
+	
+	@DeleteMapping("/delete/")
+	public void deleteCategory(@RequestBody String name) {
+		categoryService.deleteCategory(name);
 	}
 	
 }
