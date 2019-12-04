@@ -41,7 +41,8 @@ public class CategoryService {
 		
 	}
 
-	public void deleteCategory(Category category) {
+	public void deleteCategory(String name) {
+		Category category = categoryRepo.findCategoryByName(name);
 		categoryRepo.delete(category);
 	}
 
