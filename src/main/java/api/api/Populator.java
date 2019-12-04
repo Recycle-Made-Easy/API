@@ -79,7 +79,20 @@ public class Populator implements CommandLineRunner {
 		rc5.updatePlaceId("ChIJtXIJduyKOIgRguxb-Pk7F6k");
 		rc5.addCategory(categoryService.findCategoryByName("Electronics"));
 		recycleCenterService.addRecycleCenter(rc5);
-		geoLocationService.addRecycleCenterToGeoLocation("Eco ATM", "Worthington");
+		geoLocationService.addRecycleCenterToGeoLocation("Ohio Mulch Recycling Drop Off", "Westerville");
+		
+		RecycleCenter rc6 = new RecycleCenter("SWACO");
+		rc6.updateStreetAddress("6007 Hoover Road");
+		rc6.updateCity("Grove City");
+		rc6.updateState("OH");
+		rc6.updateZipCode("43123");
+		rc6.updatePlaceId("ChIJtbrck0uDOIgRCY9talKIOmw");
+		rc6.addCategory(categoryService.findCategoryByName("Glass"));
+		rc6.addCategory(categoryService.findCategoryByName("Metal"));
+		rc6.addCategory(categoryService.findCategoryByName("Plastic"));
+		rc6.addCategory(categoryService.findCategoryByName("Paper"));
+		recycleCenterService.addRecycleCenter(rc6);
+		geoLocationService.addRecycleCenterToGeoLocation("SWACO", "Grove City");
 		
 
 		
