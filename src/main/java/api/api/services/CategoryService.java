@@ -15,7 +15,7 @@ public class CategoryService {
 	CategoryRepository categoryRepo;
 	
 	@Autowired
-	RecycleCenterService recycleLocationService;
+	RecycleCenterService recycleCenterService;
 	@Autowired
 	CategoryService categoryService;
 	
@@ -43,11 +43,12 @@ public class CategoryService {
 
 	public void deleteCategory(String name) {
 		Category category = categoryRepo.findCategoryByName(name);
+		recycleCenterService.removeCategoryFromRecycleCenters(name);
 		categoryRepo.delete(category);
 	}
 
 	public void addRecycleLocationToCategory(String recycleLocationName, String categoryName) {
-		RecycleCenter recycleLocation = recycleLocationService.findRecycleCenterByName(recycleLocationName);
+		RecycleCenter recycleLocation = recycleCenterService.findRecycleCenterByName(recycleLocationName);
 		Category category = categoryService.findCategoryByName(categoryName);
 		category.addRecycleLocation(recycleLocation);
 		categoryRepo.save(category);

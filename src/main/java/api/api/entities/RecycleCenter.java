@@ -101,6 +101,10 @@ public class RecycleCenter {
 	public void addCategory(Category category) {
 		this.categories.add(category);
 	}
+	
+	public void removeCategory(Category category) {
+		this.categories.remove(category);
+	}
 
 	@Override
 	public String toString() {
@@ -168,5 +172,7 @@ public class RecycleCenter {
 			return false;
 		return true;
 	}
+
+	
 
 }

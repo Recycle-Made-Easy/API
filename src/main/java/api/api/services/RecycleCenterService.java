@@ -1,5 +1,6 @@
 package api.api.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,17 @@ public class RecycleCenterService {
 		Category category = categoryService.findCategoryByName(categoryName);
 		rc.addCategory(category);
 		recycleCenterRepo.save(rc);
+	}
+	
+	public void removeCategoryFromRecycleCenters(String categoryName) {
+		Category category = categoryService.findCategoryByName(categoryName);		
+		List<RecycleCenter> allCenters = this.findAllRecycleCenters();
+		for (RecycleCenter center : allCenters) {
+			if (center.getCategories().contains(category)) {
+				center.removeCategory(category);
+				recycleCenterRepo.save(center);
+			}
+		}
 	}
 			
 }
