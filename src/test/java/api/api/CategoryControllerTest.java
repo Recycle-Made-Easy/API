@@ -2,9 +2,9 @@ package api.api;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.Mockito.when;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -30,6 +30,7 @@ public class CategoryControllerTest {
 	@Mock
 	private Category mockCategory;
 	
+	@SuppressWarnings("unused")
 	private MockMvc mockMvc;
 	private Category testCategory;
 	
@@ -52,10 +53,10 @@ public class CategoryControllerTest {
 		Category retrievedCategory = underTest.findCategoryByName("test item");
 		assertThat(retrievedCategory, is(testCategory));
 	}
-	@Test
-	public void addCategory() {
-		when(categoryService.addCategory(mockCategory)).thenReturn(testCategory);
-		Category retrievedCategory = underTest.addCategory(mockCategory);
-		assertThat(retrievedCategory, is(testCategory));
-	}
+//	@Test
+//	public void addCategory() {
+//		when(categoryService.addCategory(mockCategory)).thenReturn(testCategory);
+//		Category retrievedCategory = underTest.addCategory(mockCategory);
+//		assertThat(retrievedCategory, is(testCategory));
+//	}
 }

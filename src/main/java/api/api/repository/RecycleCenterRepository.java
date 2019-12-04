@@ -9,5 +9,5 @@ import api.api.entities.RecycleCenter;
 public interface RecycleCenterRepository extends CrudRepository<RecycleCenter, Long> {
 
 	RecycleCenter findByName(String name);
-
+	
 }

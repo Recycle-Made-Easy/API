@@ -28,7 +28,7 @@ public class RecycleCenterService {
 		
 	}
 	
-	public List<RecycleCenter> findAllRecycleLocations() {
+	public List<RecycleCenter> findAllRecycleCenters() {
 		return(List<RecycleCenter>) recycleCenterRepo.findAll();
 	}
 
@@ -47,7 +47,7 @@ public class RecycleCenterService {
 		rc.addCategory(category);
 		recycleCenterRepo.save(rc);
 	}
-		
+			
 }
 	
 	

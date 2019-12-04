@@ -1,12 +1,13 @@
 package api.api;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.core.Is.is;
+import static org.mockito.Mockito.when;
+
 import java.util.Collections;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.mockito.Mockito.when;
-import static org.hamcrest.core.Is.is;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -29,6 +30,7 @@ public class RecyclableLocationControllerTest {
 	@Mock
 	private RecycleCenter mockRecycleLocation;
 	
+	@SuppressWarnings("unused")
 	private MockMvc mockMvc;
 	private RecycleCenter testRecycleLocation;
 	
@@ -41,7 +43,7 @@ public class RecyclableLocationControllerTest {
 	
 	@Test
 	public void findAllReturnsListOfRecyclableLocations() {
-		when(recycleLocationService.findAllRecycleLocations()).thenReturn(Collections.singletonList(testRecycleLocation));
+		when(recycleLocationService.findAllRecycleCenters()).thenReturn(Collections.singletonList(testRecycleLocation));
 		List<RecycleCenter> retrievedRecyclableLocation = underTest.findAll();
 		assertThat(retrievedRecyclableLocation, contains(testRecycleLocation));
 	}
