@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import api.api.entities.Category;
 import api.api.entities.RecycleCenter;
+import api.api.services.CategoryService;
 //import api.api.services.CategoryService;
 import api.api.services.RecycleCenterService;
 
@@ -24,8 +26,8 @@ public class RecycleCenterController {
 
 	@Autowired
 	private RecycleCenterService recycleCenterService;
-//	@Autowired
-//	private CategoryService categoryService;
+	@Autowired
+	private CategoryService categoryService;
 
 	@GetMapping("")
 	public List<RecycleCenter> findAll() {
@@ -54,7 +56,7 @@ public class RecycleCenterController {
 	public List<String> findCities() {
 		List<String> cities = new ArrayList<>();
 		List<RecycleCenter> allCenters = recycleCenterService.findAllRecycleCenters();
-		
+
 		for (RecycleCenter center : allCenters) {
 			if (!cities.contains(center.getCity())) {
 				cities.add(center.getCity());
@@ -63,11 +65,43 @@ public class RecycleCenterController {
 		return cities;
 	}
 
-//	@GetMapping("/category/{categoryId}")
-//	public Iterable<RecycleLocation> filterRecycleLocationsByCategory(@PathVariable Long categoryId) {
-//		Category category = categoryService.findCategoryById(categoryId);
-//		return recycleLocationService.findRecycleLocationsByCategory(category.getName());
-//	}
+	@GetMapping("/filter/{cityName}/{categoryId}")
+	public List<RecycleCenter> findRecycleCentersByCityAndCategory(@PathVariable String cityName,
+			@PathVariable Long categoryId) {
+		List<RecycleCenter> allCenters = recycleCenterService.findAllRecycleCenters();
+		List<RecycleCenter> filteredByCity = new ArrayList<>();
+		List<RecycleCenter> filteredByCategory = new ArrayList<>();
+
+		for (RecycleCenter center : allCenters) {
+			if (center.getCity().contains(cityName)) {
+				filteredByCity.add(center);
+			}
+		}
+
+		Category category = categoryService.findCategoryById(categoryId);
+		for (RecycleCenter center : filteredByCity) {
+			if (center.getCategories().contains(category)) {
+				filteredByCity.add(center);
+			}
+		}
+
+		return filteredByCategory;
+	}
+
+	@GetMapping("/filter/{categoryId}")
+	public List<RecycleCenter> findRecycleCentersByCategory(@PathVariable Long categoryId) {
+		List<RecycleCenter> allCenters = recycleCenterService.findAllRecycleCenters();
+		List<RecycleCenter> filteredByCategory = new ArrayList<>();
+
+		Category category = categoryService.findCategoryById(categoryId);
+		for (RecycleCenter center : allCenters) {
+			if (center.getCategories().contains(category)) {
+				allCenters.add(center);
+			}
+		}
+
+		return filteredByCategory;
+	}
 
 	@PostMapping("/add")
 	public RecycleCenter addRecycleLocation(@RequestBody RecycleCenter recycleLocation) {
