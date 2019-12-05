@@ -81,7 +81,7 @@ public class RecycleCenterController {
 		Category category = categoryService.findCategoryById(categoryId);
 		for (RecycleCenter center : filteredByCity) {
 			if (center.getCategories().contains(category)) {
-				filteredByCity.add(center);
+				filteredByCategory.add(center);
 			}
 		}
 
