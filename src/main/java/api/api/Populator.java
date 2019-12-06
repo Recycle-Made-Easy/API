@@ -51,7 +51,7 @@ public class Populator implements CommandLineRunner {
 		recycleCenterService.addRecycleCenter(rc2);
 		geoLocationService.addRecycleCenterToGeoLocation("Hugo Neu Recycling", "Columbus");
 
-		RecycleCenter rc3 = new RecycleCenter("Ohio Drop Off Recycling Center");
+		RecycleCenter rc3 = new RecycleCenter("Ohio Drop Off");
 		rc3.updateStreetAddress("533 N Nelson Rd");
 		rc3.updateCity("Columbus");
 		rc3.updateState("OH");
@@ -59,7 +59,7 @@ public class Populator implements CommandLineRunner {
 		rc3.updatePlaceId("ChIJRcAIzvuKOIgRSFyeJ0LI-7Y");
 		rc3.addCategory(categoryService.findCategoryByName("Electronics"));
 		recycleCenterService.addRecycleCenter(rc3);
-		geoLocationService.addRecycleCenterToGeoLocation("Ohio Drop Off Recycling Center", "Columbus");
+		geoLocationService.addRecycleCenterToGeoLocation("Ohio Drop Off", "Columbus");
 
 		RecycleCenter rc4 = new RecycleCenter("Eco ATM");
 		rc4.updateStreetAddress("60 Worthington Mall");
@@ -71,7 +71,7 @@ public class Populator implements CommandLineRunner {
 		recycleCenterService.addRecycleCenter(rc4);
 		geoLocationService.addRecycleCenterToGeoLocation("Eco ATM", "Worthington");
 
-		RecycleCenter rc5 = new RecycleCenter("Ohio Mulch Recycling Drop Off");
+		RecycleCenter rc5 = new RecycleCenter("Ohio Mulch Recycling");
 		rc5.updateStreetAddress("4665 Westerville Road");
 		rc5.updateCity("Westerville");
 		rc5.updateState("OH");
@@ -79,7 +79,7 @@ public class Populator implements CommandLineRunner {
 		rc5.updatePlaceId("ChIJtXIJduyKOIgRguxb-Pk7F6k");
 		rc5.addCategory(categoryService.findCategoryByName("Electronics"));
 		recycleCenterService.addRecycleCenter(rc5);
-		geoLocationService.addRecycleCenterToGeoLocation("Ohio Mulch Recycling Drop Off", "Westerville");
+		geoLocationService.addRecycleCenterToGeoLocation("Ohio Mulch Recycling", "Westerville");
 
 		RecycleCenter rc6 = new RecycleCenter("SWACO");
 		rc6.updateStreetAddress("6007 Hoover Road");
