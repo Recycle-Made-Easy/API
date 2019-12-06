@@ -42,10 +42,10 @@ public class CategoryServiceTest {
 		underTest.findAllCategories();
 		verify(categoryRepo).findAll();
 	}
-	@Test
-	public void deleteCategory() {
-		underTest.deleteCategory(mockCategory);
-		verify(categoryRepo).delete(mockCategory);
-	}
+//	@Test
+//	public void deleteCategory() {
+//		underTest.deleteCategory(mockCategory);
+//		verify(categoryRepo).delete(mockCategory);
+//	}
 	
 }
