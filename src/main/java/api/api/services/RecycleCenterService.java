@@ -58,7 +58,7 @@ public class RecycleCenterService {
 			}
 		}
 	}
-  
+
 	public RecycleCenter saveChangesToRecycleCenter(RecycleCenter removedRC, RecycleCenter updatedRC) {
 		recycleCenterRepo.delete(removedRC);
 		return recycleCenterRepo.save(updatedRC);
@@ -66,4 +66,5 @@ public class RecycleCenterService {
 
 	public RecycleCenter findRecycleCenterById(Long id) {
 		return recycleCenterRepo.findById(id).get();
+	}
 }
