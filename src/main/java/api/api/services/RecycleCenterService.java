@@ -59,9 +59,14 @@ public class RecycleCenterService {
 		}
 	}
 
-	public RecycleCenter saveChangesToRecycleCenter(RecycleCenter removedRC, RecycleCenter updatedRC) {
-		recycleCenterRepo.delete(removedRC);
-		return recycleCenterRepo.save(updatedRC);
+	public RecycleCenter saveChangesToRecycleCenter(RecycleCenter origRC, RecycleCenter updatedRC) {
+		origRC.updateName(updatedRC.getName());
+		origRC.updateStreetAddress(updatedRC.getStreetAddress());
+		origRC.updateCity(updatedRC.getCity());
+		origRC.updateState(updatedRC.getState());
+		origRC.updateZipCode(updatedRC.getZipCode());
+		origRC.updatePlaceId(updatedRC.getPlaceId());
+		return recycleCenterRepo.save(origRC);
 	}
 
 	public RecycleCenter findRecycleCenterById(Long id) {
