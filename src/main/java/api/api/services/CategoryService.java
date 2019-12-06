@@ -13,16 +13,16 @@ import api.api.repository.CategoryRepository;
 public class CategoryService {
 	@Autowired
 	CategoryRepository categoryRepo;
-	
+
 	@Autowired
 	RecycleCenterService recycleCenterService;
 	@Autowired
 	CategoryService categoryService;
-	
+
 	public Category addCategory(Category category) {
 		return categoryRepo.save(category);
 	}
-	
+
 	public void addCategory(String name) {
 		Category category = new Category(name);
 		categoryRepo.save(category);
@@ -31,14 +31,14 @@ public class CategoryService {
 	public Category findCategoryByName(String name) {
 		return categoryRepo.findCategoryByName(name);
 	}
-	
+
 	public Category findCategoryById(Long id) {
 		return categoryRepo.findById(id).get();
 	}
 
 	public List<Category> findAllCategories() {
 		return (List<Category>) categoryRepo.findAll();
-		
+
 	}
 
 	public void deleteCategory(String name) {

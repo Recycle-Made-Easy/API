@@ -7,8 +7,7 @@ import api.api.entities.Category;
 
 @Repository
 public interface CategoryRepository extends CrudRepository<Category, Long> {
-	
+
 	public Category findCategoryByName(String name);
-	
 
 }

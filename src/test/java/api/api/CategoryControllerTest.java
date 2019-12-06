@@ -53,10 +53,4 @@ public class CategoryControllerTest {
 		Category retrievedCategory = underTest.findCategoryByName("test item");
 		assertThat(retrievedCategory, is(testCategory));
 	}
-//	@Test
-//	public void addCategory() {
-//		when(categoryService.addCategory(mockCategory)).thenReturn(testCategory);
-//		Category retrievedCategory = underTest.addCategory(mockCategory);
-//		assertThat(retrievedCategory, is(testCategory));
-//	}
 }

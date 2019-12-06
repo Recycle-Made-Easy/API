@@ -14,10 +14,11 @@ public class Category {
 	@GeneratedValue
 	private Long id;
 	private String name;
-	@ManyToMany (mappedBy = "categories")
+	@ManyToMany(mappedBy = "categories")
 	private List<RecycleCenter> centers;
 
-	protected Category() {}
+	protected Category() {
+	}
 
 	public Category(String name) {
 		this.name = name;
@@ -29,7 +30,7 @@ public class Category {
 
 	public Long getId() {
 		return id;
-	}	
+	}
 
 	public void addRecycleLocation(RecycleCenter recycleLocation) {
 		this.centers.add(recycleLocation);
