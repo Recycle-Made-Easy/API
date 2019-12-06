@@ -60,11 +60,12 @@ public class RecycleCenterService {
 	}
 
 	public RecycleCenter saveChangesToRecycleCenter(RecycleCenter origRC, RecycleCenter updatedRC) {
-//		recycleCenterRepo.delete(origRC);
 		origRC.updateName(updatedRC.getName());
-		origRC.updateStreetAddress(updatedRC.getStreetAddress());	
-		
-		
+		origRC.updateStreetAddress(updatedRC.getStreetAddress());
+		origRC.updateCity(updatedRC.getCity());
+		origRC.updateState(updatedRC.getState());
+		origRC.updateZipCode(updatedRC.getZipCode());
+		origRC.updatePlaceId(updatedRC.getPlaceId());
 		return recycleCenterRepo.save(origRC);
 	}
 
