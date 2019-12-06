@@ -49,11 +49,11 @@ public class RecycleCenter {
 	public void updateStreetAddress(String streetAddress) {
 		this.streetAddress = streetAddress;
 	}
-	
+
 	public void updatePlaceId(String placeId) {
 		this.placeId = placeId;
 	}
-	
+
 	public String getPlaceId() {
 		return this.placeId;
 	}
@@ -85,11 +85,11 @@ public class RecycleCenter {
 	public Long getId() {
 		return id;
 	}
-	
+
 	public GeoLocation getGeoLocation() {
 		return geoLocation;
 	}
-	
+
 	public void updateGeoLocation(GeoLocation geo) {
 		this.geoLocation = geo;
 	}
@@ -97,11 +97,11 @@ public class RecycleCenter {
 	public List<Category> getCategories() {
 		return categories;
 	}
-	
+
 	public void addCategory(Category category) {
 		this.categories.add(category);
 	}
-	
+
 	public void removeCategory(Category category) {
 		this.categories.remove(category);
 	}
@@ -172,7 +172,5 @@ public class RecycleCenter {
 			return false;
 		return true;
 	}
-
-	
 
 }

@@ -18,11 +18,12 @@ public class GeoLocation {
 	private String name;
 	private String placeId;
 	@JsonIgnore
-	@OneToMany (mappedBy = "geoLocation")
+	@OneToMany(mappedBy = "geoLocation")
 	private List<RecycleCenter> recycleCenters;
-	
-	protected GeoLocation() {}
-	
+
+	protected GeoLocation() {
+	}
+
 	public GeoLocation(String name, String placeId) {
 		this.name = name;
 		this.placeId = placeId;
@@ -35,15 +36,15 @@ public class GeoLocation {
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getPlaceId() {
 		return placeId;
 	}
-	
+
 	public List<RecycleCenter> getRecycleCenters() {
 		return this.recycleCenters;
 	}
-	
+
 	public void addRecycleCenterToGeoLocation(RecycleCenter rc) {
 		this.recycleCenters.add(rc);
 	}
@@ -90,10 +91,4 @@ public class GeoLocation {
 		return true;
 	}
 
-	
-
-	
-	
-	
-	
 }
