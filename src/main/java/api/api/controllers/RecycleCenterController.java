@@ -67,6 +67,78 @@ public class RecycleCenterController {
 		return cities;
 	}
 
+	@GetMapping("/zips")
+	public List<String> findZipCodes() {
+		List<String> zipCodes = new ArrayList<>();
+		List<RecycleCenter> allCenters = recycleCenterService.findAllRecycleCenters();
+
+		for (RecycleCenter center : allCenters) {
+			if (!zipCodes.contains(center.getZipCode())) {
+				zipCodes.add(center.getCity());
+			}
+		}
+		return zipCodes;
+	}
+
+	@GetMapping("/zip/{zipCode}")
+	public List<RecycleCenter> findRecycleCentersByZipCodes(@PathVariable String zipCode) {
+		List<RecycleCenter> allCenters = recycleCenterService.findAllRecycleCenters();
+		List<RecycleCenter> filteredByZipCode = new ArrayList<>();
+
+		for (RecycleCenter center : allCenters) {
+			if (center.getZipCode().contains(zipCode)) {
+				filteredByZipCode.add(center);
+			}
+		}
+
+		return filteredByZipCode;
+	}
+
+	@GetMapping("/zip/{cityName}/{zipCode}")
+	public List<RecycleCenter> findRecycleCentersByCityAndZipCode(@PathVariable String cityName,
+			@PathVariable String zipCode) {
+		List<RecycleCenter> allCenters = recycleCenterService.findAllRecycleCenters();
+		List<RecycleCenter> filteredByCity = new ArrayList<>();
+		List<RecycleCenter> filteredByZipCode = new ArrayList<>();
+
+		for (RecycleCenter center : allCenters) {
+			if (center.getCity().contains(cityName)) {
+				filteredByCity.add(center);
+			}
+		}
+
+		for (RecycleCenter center : filteredByCity) {
+			if (center.getZipCode().contains(zipCode)) {
+				filteredByZipCode.add(center);
+			}
+		}
+
+		return filteredByZipCode;
+	}
+
+	@GetMapping("/zipcat/{zipCode}/{categoryId}")
+	public List<RecycleCenter> findRecycleCentersByZipCodeAndCategory(@PathVariable String zipCode,
+			@PathVariable Long categoryId) {
+		List<RecycleCenter> allCenters = recycleCenterService.findAllRecycleCenters();
+		List<RecycleCenter> filteredByZipCode = new ArrayList<>();
+		List<RecycleCenter> filteredByCategory = new ArrayList<>();
+
+		for (RecycleCenter center : allCenters) {
+			if (center.getZipCode().contains(zipCode)) {
+				filteredByZipCode.add(center);
+			}
+		}
+
+		Category category = categoryService.findCategoryById(categoryId);
+		for (RecycleCenter center : filteredByZipCode) {
+			if (center.getCategories().contains(category)) {
+				filteredByCategory.add(center);
+			}
+		}
+
+		return filteredByCategory;
+	}
+
 	@GetMapping("/filter/{cityName}/{categoryId}")
 	public List<RecycleCenter> findRecycleCentersByCityAndCategory(@PathVariable String cityName,
 			@PathVariable Long categoryId) {
@@ -82,6 +154,36 @@ public class RecycleCenterController {
 
 		Category category = categoryService.findCategoryById(categoryId);
 		for (RecycleCenter center : filteredByCity) {
+			if (center.getCategories().contains(category)) {
+				filteredByCategory.add(center);
+			}
+		}
+
+		return filteredByCategory;
+	}
+
+	@GetMapping("/filter/{cityName}/{zipCode}/{categoryId}")
+	public List<RecycleCenter> findRecycleCentersByCityAndCategory(@PathVariable String cityName,
+			@PathVariable String zipCode, @PathVariable Long categoryId) {
+		List<RecycleCenter> allCenters = recycleCenterService.findAllRecycleCenters();
+		List<RecycleCenter> filteredByCity = new ArrayList<>();
+		List<RecycleCenter> filteredByZipCode = new ArrayList<>();
+		List<RecycleCenter> filteredByCategory = new ArrayList<>();
+
+		for (RecycleCenter center : allCenters) {
+			if (center.getCity().contains(cityName)) {
+				filteredByCity.add(center);
+			}
+		}
+		
+		for (RecycleCenter center : filteredByCity) {
+			if (center.getZipCode().contains(zipCode)) {
+				filteredByZipCode.add(center);
+			}
+		}
+
+		Category category = categoryService.findCategoryById(categoryId);
+		for (RecycleCenter center : filteredByZipCode) {
 			if (center.getCategories().contains(category)) {
 				filteredByCategory.add(center);
 			}
@@ -109,11 +211,11 @@ public class RecycleCenterController {
 	public RecycleCenter addRecycleLocation(@RequestBody RecycleCenter recycleLocation) {
 		return recycleCenterService.addRecycleCenter(recycleLocation);
 	}
-	
+
 	@PatchMapping("/edit/{id}")
 	@ResponseBody
 	public RecycleCenter editRecycleCenter(@PathVariable Long id, @RequestBody RecycleCenter recycleCenter) {
-		RecycleCenter origRC = recycleCenterService.findRecycleCenterById(id);		
+		RecycleCenter origRC = recycleCenterService.findRecycleCenterById(id);
 		return recycleCenterService.saveChangesToRecycleCenter(origRC, recycleCenter);
 	}
 
