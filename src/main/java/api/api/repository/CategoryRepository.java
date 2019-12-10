@@ -9,5 +9,6 @@ import api.api.entities.Category;
 public interface CategoryRepository extends CrudRepository<Category, Long> {
 
 	public Category findCategoryByName(String name);
+	public Iterable<Category> findAllByOrderByName();
 
 }
