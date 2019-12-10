@@ -29,7 +29,7 @@ public class RecycleCenterService {
 	}
 
 	public List<RecycleCenter> findAllRecycleCenters() {
-		return (List<RecycleCenter>) recycleCenterRepo.findAll();
+		return (List<RecycleCenter>) recycleCenterRepo.findAllByOrderByName();
 	}
 
 	public void deleteRecycleLocation(RecycleCenter recycleLocation) {
