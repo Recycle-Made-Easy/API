@@ -8,6 +8,7 @@ import api.api.entities.RecycleCenter;
 @Repository
 public interface RecycleCenterRepository extends CrudRepository<RecycleCenter, Long> {
 
-	RecycleCenter findByName(String name);
+	public RecycleCenter findByName(String name);
+	public Iterable<RecycleCenter> findAllByOrderByName();
 
 }
